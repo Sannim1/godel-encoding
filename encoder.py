@@ -1,7 +1,7 @@
 import primes
 import utils
 
-def encode(sentence):
+def encode(sentence, hex_output):
     sentence = " ".join(sentence.splitlines())
     words = sentence.split(" ")
     longest_word_length = 0
@@ -15,6 +15,9 @@ def encode(sentence):
     godel_words = []
     for word in words:
         godel_word = make_godel_word(word, required_primes)
+        if hex_output:
+            godel_word = format(godel_word, 'x')
+
         godel_words.append(str(godel_word))
 
     return "|".join(godel_words)

@@ -12,7 +12,7 @@ def decode(encoded_sentence):
 
 def make_word_from_godel_code(godel_code):
     word = ""
-    factor_count = factorize(int(godel_code))
+    factor_count = factorize(to_int(godel_code))
 
     factors = factor_count.keys()
     factors.sort()
@@ -48,3 +48,10 @@ def factorize(number):
                 factor += 1
 
     return factor_counter
+
+def to_int(number):
+    try:
+        return int(number)
+    except ValueError:
+        # for hexadecimal numbers
+        return int(number, 16)
